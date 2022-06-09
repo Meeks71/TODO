@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     } catch (error) {
         console.log(error)
     }
- })
+ });
 
 
 //Create todos
@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
              console.error(error)
              res.status(400).json('Bad request!')
         }
-})
+});
 
 //Get todos by ID 
 router.get('/:id', async(req , res) => {
@@ -38,9 +38,9 @@ try {
     console.error(error)
     res.status(400).json({
         msg: 'Id not found'
-    })
+    });
   }
-})
+});
 
 //Update tODO by ID
 //* UPDATE TODO BY ID
@@ -49,12 +49,12 @@ router.put('/:id', async (req, res) => {
     const newToDoData = req.body
      try {
          //* find the todo by the id
-         const todo = await contactModel.findByIdAndUpdate(id, newToDoData, {new: true})
+         const todo = await TodoModel.findByIdAndUpdate(id, newToDoData, {new: true})
          res.status(202).json(todo)
      } catch (error) {
          console.log(error)
      }
-})
+});
 
 //! DELETE A TODO
 router.delete('/:id', async (req, res) => {
@@ -62,11 +62,11 @@ router.delete('/:id', async (req, res) => {
 
     try {
         const todo = await toDoModel.findByIdAndDelete(id)
-        res.status(200).json('The contact was deleted!')
+        res.status(200).json({msg: 'The contact was deleted!'})
     } catch (error) {
         console.log(error);
     }
 })
 
 
-module.exports = router
+module.exports = router;

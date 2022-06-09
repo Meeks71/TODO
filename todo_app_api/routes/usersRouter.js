@@ -14,6 +14,6 @@ router.post('/', async(req, res, ) => {
         console.error(error)
            res.status(400).json('bad request!!!')
     }
-})
+});
 
 module.exports = router 

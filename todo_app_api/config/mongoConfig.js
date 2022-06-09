@@ -10,4 +10,4 @@ module.exports = async() => {
     } catch (error) {
         console.error(error)
     }
-}
+};
