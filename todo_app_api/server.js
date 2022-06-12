@@ -1,14 +1,22 @@
 const express = require('express')
-require('dotenv').config()
+require('dotenv').config()//init dotenv
 
 const mongoConfig = require('./config/mongoConfig')
-const todosRouter = require('./routes/contactRouter')
-const usersRouter= require('./routes/userRouter')
+const todosRouter = require('./routes/todosRouter')
+const usersRouter= require('./routes/usersRouter')
+const morgan = require('morgan')
+const helmet = require('helmet')
+const authRouter = require('./routes/authRouter')
+
 
 const app = express()
 const PORT = 5000
 
+//Middleware 
 app.use(express.json())
+app.use(morgan('dev'))//Monitoring app
+app.use(helmet())//Protecting the data to keep secure.
+app.use('/auth', authRouter)
 
 //* Routers
 app.use('/todos', todosRouter)

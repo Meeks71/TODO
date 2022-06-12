@@ -42,7 +42,7 @@ try {
   }
 });
 
-//Update tODO by ID
+
 //* UPDATE TODO BY ID
 router.put('/:id', async (req, res) => {
     const id = req.params.id
@@ -62,11 +62,11 @@ router.delete('/:id', async (req, res) => {
 
     try {
         const todo = await toDoModel.findByIdAndDelete(id)
-        res.status(200).json({msg: 'The contact was deleted!'})
+        res.status(200).json({msg: 'The user was deleted!'})
     } catch (error) {
         console.log(error);
     }
-})
+});
 
 
 module.exports = router;
